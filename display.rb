@@ -1,34 +1,54 @@
 # coding: utf-8
-class Display < Sprite
-def title
-      # タイトル画面
-      Window.draw_font(0, 30, "PRESS SPACE", Font.default)
-      # スペースキーが押されたらシーンを変える
-      if Input.key_push?(K_SPACE)
-        GAME_INFO[:scene] = :playing
+require "dxopal"
+include DXOpal
 
-end
+GAME_INFO = {
+  scene: :title,  # 現在のシーン(起動直後は:title)
+  score: 0,
+}
+# ゲーム本体を表すクラス
+class Game
+  def initialize
+    reset
+  end
 
-def playing
-      # ゲーム中
-      player.update
-      items.update(player)
+  # ゲームの状態をリセットする
+  def reset
+    @player = Player.new
+    @map = Map.new
+    GAME_INFO[:score] = 0
+  end
 
-      player.draw
-      items.draw
+  # ゲームを実行する
+  def run
+    Window.loop do
+      Window.draw_box_fill(0, 0, Window.width, GROUND_Y, [128, 255, 255])
+      Window.draw_box_fill(0, GROUND_Y, Window.width, Window.height, [0, 128, 0])
+      Window.draw_font(0, 0, "SCORE: #{GAME_INFO[:score]}", Font.default)
 
-end
+      case GAME_INFO[:scene]
+      when :title
+        Window.draw_font(0, 30, "PRESS SPACE", Font.default)
+        if Input.key_push?(K_SPACE)
+          GAME_INFO[:scene] = :playing
+        end
+      when :playing
+      #  @player.update
+       # @map.update
 
-def resalt
-Window.draw_font(0, 30, "PRESS SPACE", Font.default)
-      player.draw
-      items.draw
-      # スペースキーが押されたらゲームの状態をリセットし、シーンを変える
-      if Input.key_push?(K_SPACE)
-        player = Player.new
-        items = Items.new
-        GAME_INFO[:score] = 0
-        GAME_INFO[:scene] = :playing
+       # @player.draw
+       # @map.draw
+     if Input.key_push?(K_SPACE)
+          GAME_INFO[:scene] = :playing
+        end
+      when :result
+        Window.draw_font(0, 30, "PRESS SPACE", Font.default)
+        if Input.key_push?(K_SPACE)
+          reset
+          GAME_INFO[:scene] = :playing
+        end
       end
+    end
+  end
 end
 
