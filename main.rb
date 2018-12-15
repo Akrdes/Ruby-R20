@@ -25,6 +25,14 @@ Window.load_resources do
   $ukis << Uki.new(400,300,Image[:ukishima])
   $ukis << Uki.new(200,180,Image[:ukishima])
   $ukis << Uki.new(50,80,Image[:ukishima])
+  $ukis << Uki.new(150,-20,Image[:ukishima])
+  $ukis << Uki.new(300,-130,Image[:ukishima])
+  $ukis << Uki.new(430,-239,Image[:ukishima])
+  #$ukis << Uki.new(320,-400,Image[:ukishima])
+  #$ukis << Uki.new(170,-520,Image[:ukishima])
+  #$ukis << Uki.new(10,-620,Image[:ukishima])
+  #$ukis << Uki.new(120,-730,Image[:ukishima])
+  #$ukis << Uki.new(250,-850,Image[:ukishima])
 
   count = 1
   
@@ -34,8 +42,10 @@ Window.load_resources do
     $map.draw
     if Input.key_push?(K_SPACE)
       $ukis[count].hit
-
       count += 1
+      if count >10
+        p 123
+      end
     end
     
     $ukis.each do |uki|
