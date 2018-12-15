@@ -1,3 +1,4 @@
 # coding: utf-8
 
-class Background < Sprite
+class Map < Sprite
+  
