@@ -8,6 +8,7 @@ Image.register(:player, 'player.png')
 
 Window.load_resources do
   player = Player.new(Window.width/2, GROUND_Y-Image[:player].height, Image[:player])
+  p GROUND_Y-Image[:player].height
   Window.loop do
     player.update
     Window.draw_box_fill(0, 0, Window.width, GROUND_Y, [128, 255, 255])
