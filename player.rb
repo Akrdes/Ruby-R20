@@ -9,12 +9,12 @@ class Player < Sprite
     @move = 4.0
     @jflag = false
     @vy = 0
-    @vy0 = -12.0
-    @g = 0.5
+    @vy0 = -13.0
+    @g = 1.0
     super
   end
   
-  def update#(island)
+  def update(island)
 	if (Input.key_down?(K_RIGHT) && self.x < @x1-self.image.width ) # →キーを押したか
 		self.x += @move;
 	end
@@ -24,11 +24,8 @@ class Player < Sprite
 	
 	if (@jflag)
 		self.y += @vy;
-		if(@vy==0)
-		  p self.y
-		end
-		#self.collision=(self.x, self.y, self.x+self.image.width, self.y+self.image.height)
-		#Sprite.check(island, @pl)
+		self.collision=[self.x, self.y, self.x+self.image.width, self.y+self.image.height]
+		Sprite.check(self, island)
 		if ( @vy == @vy0 * (-1.0) )
 			@jflag = false;
 		end
@@ -43,5 +40,6 @@ class Player < Sprite
   
   def shot
     @jflag = false;
+    self.y = $ukis[$count-1].y - (self.image.height)
   end  
 end
