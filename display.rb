@@ -22,7 +22,7 @@ class Game
     $player.y = 761 - $player.h
     $player.jflag = false
     $player.vy = 0
-    $map.y = -1000
+    $map.y = -1600
     $ukis.each do |uki|
       uki.init
     end
@@ -37,7 +37,7 @@ class Game
       case GAME_INFO[:scene]
       
       when :home
-       Window.draw(0, -1000,Image[:background])
+       Window.draw(0, -1600,Image[:background])
        Window.draw_scale(-80,200,Image[:title],0.7,0.7)
        Window.draw_scale(-410,400,Image[:title_msg],0.4,0.4)
         if Input.key_push?(K_ENTER)
@@ -56,7 +56,7 @@ class Game
         Window.draw_font(600, 0, "SCORE: #{GAME_INFO[:score]}",Font.default)
       
       #ゲームクリア
-      if($player.y == $ukis[15].y - $player.h)
+      if($player.y == $ukis[16].y - $player.h)
         GAME_INFO[:scene] = :resultclear
       #ゲームオーバー
       elsif($player.y > 800)
@@ -68,7 +68,7 @@ class Game
       end
         
       when :resultclear
-        Window.draw(0, -1000,Image[:background])
+        Window.draw(0, -1600,Image[:background])
         Window.draw_scale(-190,100,Image[:clear],0.6,0.6)
         Window.draw_font(230,300,"SCORE: #{$score}",Font.default)
         Window.draw_scale(-140,400,Image[:return],0.65,0.65)

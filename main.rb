@@ -29,7 +29,7 @@ Window.load_resources do
   
   $score = 0
 
-  $map = Map.new(0,-2500,background_img)
+  $map = Map.new(0,-1600,background_img)
   
   $ukis = []
   $ukis << Uki.new(235,761,Image[:ukishima],Image[:ukishima].height)
@@ -47,8 +47,9 @@ Window.load_resources do
   $ukis << Uki.new(170,-520,Image[:ukishima],Image[:ukishima].height)
   $ukis << Uki.new(10,-620,Image[:ukishima],Image[:ukishima].height)
   $ukis << Uki.new(120,-730,Image[:ukishima],Image[:ukishima].height)
-  $ukis << Uki.new(250,-850,Image[:ukishima],Image[:ukishima].height)
-
+  $ukis << Uki.new(250,-830,Image[:ukishima],Image[:ukishima].height)
+  $ukis << Uki.new(350,-950,Image[:ukishima],Image[:ukishima].height)
+  
   $player = Player.new(270, GROUND_Y-Image[:player].height, Image[:player], Image[:player].height)
 
   game=Game.new
