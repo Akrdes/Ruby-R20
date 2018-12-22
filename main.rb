@@ -17,6 +17,10 @@ Image.register(:return,'images/returnt.png')
 Image.register(:retry,'images/retry.png')
 Image.register(:ohh,'images/ohh.jpg')
 Image.register(:player, 'images/bobu.png')
+
+Sound.register(:bgm, 'sounds/bgm.mp3')
+Sound.register(:jump, 'sounds/jump.mp3')
+
 GROUND_Y = 761
 
 Window.load_resources do
@@ -26,7 +30,7 @@ Window.load_resources do
   background_img.set_color_key([0, 0, 0])
   ukishima_img = Image[:ukishima]
   ukishima_img.set_color_key([255, 255, 255])
-  
+  Sound[:bgm].play
   $score = 0
 
   $map = Map.new(0,-1600,background_img)

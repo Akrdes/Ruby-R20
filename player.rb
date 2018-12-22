@@ -45,6 +45,7 @@ class Player < Sprite
           if (Input.key_down?(K_SPACE))
               self.jflag = true;
               self.vy = self.vy0;
+              Sound[:jump].play
           end
       end
       self.y += 6
