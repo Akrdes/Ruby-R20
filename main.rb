@@ -2,6 +2,7 @@ require 'dxopal'
 include DXOpal
 
 require_remote 'map.rb'
+
 require_remote 'display.rb'
 require_remote 'player.rb'
 
@@ -51,6 +52,5 @@ Window.load_resources do
   $player = Player.new(270, GROUND_Y-Image[:player].height, Image[:player], Image[:player].height)
 
   game=Game.new
-
   game.run
 end

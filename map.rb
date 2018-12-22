@@ -5,6 +5,7 @@ class Map < Sprite
 end
 
 class Uki < Sprite
+
     def initialize(x,y,image,height)
         @s_x = x
         @s_y = y
@@ -38,6 +39,5 @@ class Uki < Sprite
         elsif($player.y > (self.y + self.h))
             $player.x = self.x
         end
-
     end
 end
