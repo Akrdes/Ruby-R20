@@ -17,8 +17,6 @@ class Game
 
   # ゲームの状態をリセットする
   def reset
-   # @player = Player.new
-   # @map = Map.new
     $score = 0
     $player.x  = 270
     $player.y = 761 - $player.h

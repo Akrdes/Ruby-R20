@@ -24,8 +24,6 @@ class Uki < Sprite
     def hit
         $score += 100
         if($player.y < (self.y - 10))
-            #$player.jflag = false
-            #$player.vy = $player.vy0 * (-1.0)
             if($player.vy > 0)
                 $player.f_false
                 $player.vy = 0

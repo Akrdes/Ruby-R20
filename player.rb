@@ -1,7 +1,7 @@
 # coding: utf-8
 
 class Player < Sprite
-        attr_accessor :x1,:y1,:move,:jflag,:vy,:vy0,:g,:pl
+        attr_accessor :x1,:y1,:move,:jflag,:vy,:vy0,:g,:height
   
     def initialize(x,y,image,height)
       @x1 = x * 2
@@ -27,7 +27,7 @@ class Player < Sprite
         @jflag = false
     end
     
-    def update#(island)
+    def update
       if (Input.key_down?(K_RIGHT) && self.x < self.x1-self.image.width ) # →キーを押したか
           self.x += self.move;
       end
@@ -37,8 +37,6 @@ class Player < Sprite
       
       if (self.jflag)
           self.y += self.vy;
-          #self.collision=(self.x, self.y, self.x+self.image.width, self.y+self.image.height)
-          #Sprite.check(island, @pl)
           if ( self.vy == self.vy0 * (-1.0) )
               self.jflag = false;
           end
@@ -54,5 +52,5 @@ class Player < Sprite
     
     def c(island)
       self.y  = island.y - self.height
-    end  
+    end 
   end
